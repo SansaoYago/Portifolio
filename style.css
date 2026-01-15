@@ -1,0 +1,177 @@
+/* HEADER COM ALTURA FIXA */
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+header {
+    background: url('img/background-header.png') center/cover;
+    gap: 15px;
+    display: flex;
+    flex-flow: column;
+    align-items: flex-end;
+    height: 330px; /* ALTURA FIXA */
+    min-height: 330px; /* PREVINE CRESCIMENTO */
+    max-height: 300px;
+    padding: 0px 0px;
+    position: relative;
+    overflow: hidden; /* IMPEDE QUE CONTEÚDO EXTRAVAZE */
+}
+
+img {
+    width: 80%;
+    border-radius: 50%;
+}
+
+nav {
+    width: 100%;
+    padding: 8px 5px;
+    top: 0;
+    position: sticky;
+    display: flex;
+    justify-content: flex-end;
+    gap: 5px;
+}
+
+nav>a {
+    text-decoration: none;
+    background-color: rgba(241, 241, 241, 0.544);
+    padding: 8px;
+
+    color: white;
+}
+
+.perfil {
+    width: 100%;
+    padding: 15px 0px;
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.img {
+    background-color: rgba(255, 255, 255, 0.421);
+    padding: 10px 0px 5px 10px;
+    border-radius: 45% 0% 0% 45%;
+}
+
+
+/* CONTAINER DO CÓDIGO SEM FUNDO */
+.code-overlay {
+    font-family: 'Courier New', monospace;
+    font-size: 14px;
+    padding: 15px;
+    max-width: 800px;
+    height: 150px; /* ALTURA FIXA PARA O CÓDIGO */
+    overflow: hidden;
+    position: relative;
+    z-index: 2;
+    text-shadow: 
+        0 0 10px rgba(10, 175, 255, 0.3),
+        0 0 2px rgba(0, 0, 0, 0.8); /* SOMBRA PARA CONTRASTE */
+}
+
+.code-display {
+    margin: 0;
+    color: #f8f8f2;
+    line-height: 1.6;
+    white-space: pre; /* CRÍTICO: preserva espaços e quebras */
+    word-wrap: normal;
+    background: transparent !important;
+    font-family: 'Courier New', monospace;
+    font-size: 14px;
+    tab-size: 4; /* Define que \t = 4 espaços */
+}
+
+/* SYNTAX HIGHLIGHTING (ajustado para brilhar mais) */
+.keyword { 
+    color: #ff79c6; 
+    text-shadow: 0 0 8px rgba(255, 121, 198, 0.5);
+}
+.function { 
+    color: #50fa7b; 
+    text-shadow: 0 0 8px rgba(80, 250, 123, 0.5);
+}
+.string { 
+    color: #f1fa8c; 
+    text-shadow: 0 0 8px rgba(241, 250, 140, 0.5);
+}
+.comment { 
+    color: #6272a4; 
+    font-style: italic;
+    opacity: 0.8;
+}
+.operator { 
+    color: #ff79c6; 
+}
+.punctuation { 
+    color: #f8f8f2; 
+}
+.number { 
+    color: #bd93f9; 
+    text-shadow: 0 0 8px rgba(189, 147, 249, 0.5);
+}
+.class { 
+    color: #8be9fd; 
+    text-shadow: 0 0 8px rgba(139, 233, 253, 0.5);
+}
+.parameter { 
+    color: #ffb86c; 
+    text-shadow: 0 0 8px rgba(255, 184, 108, 0.5);
+}
+
+/* CURSOR MAIS VISÍVEL */
+.cursor {
+    display: inline-block;
+    width: 8px;
+    height: 18px;
+    background-color: #0af;
+    margin-left: 2px;
+    animation: blink 1s infinite;
+    vertical-align: middle;
+    box-shadow: 0 0 10px #0af;
+}
+
+@keyframes blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+}
+
+#animated-code::after {
+    content: '';
+    display: inline-block;
+    width: 12px; /* LARGURA AUMENTADA */
+    height: 20px; /* ALTURA AUMENTADA */
+    background-color: rgb(211, 213, 214);
+    margin-left: 4px;
+    animation: blink 500ms infinite;
+    vertical-align: middle;
+
+    border-radius: 1px;
+}
+
+@keyframes blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+}
+
+/* PERFIL SECTION - AJUSTES */
+.perfil {
+    width: 100%;
+    padding: 15px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start; /* Alinha no topo */
+    height: 180px; /* Altura controlada */
+    position: relative;
+}
+
+/* IMAGEM DE PERFIL */
+.img {
+    background-color: rgba(255, 255, 255, 0.421);
+    padding: 10px 0px 5px 10px;
+    border-radius: 45% 0% 0% 45%;
+    position: relative;
+    z-index: 3;
+}
