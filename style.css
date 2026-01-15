@@ -47,15 +47,7 @@ nav>a {
     padding: 15px 0px;
     display: flex;
     justify-content: space-between;
-
 }
-
-.img {
-    background-color: rgba(255, 255, 255, 0.421);
-    padding: 10px 0px 5px 10px;
-    border-radius: 45% 0% 0% 45%;
-}
-
 
 /* CONTAINER DO CÓDIGO SEM FUNDO */
 .code-overlay {
@@ -172,6 +164,25 @@ nav>a {
     background-color: rgba(255, 255, 255, 0.421);
     padding: 10px 0px 5px 10px;
     border-radius: 45% 0% 0% 45%;
-    position: relative;
-    z-index: 3;
+}
+
+@media screen and (max-width: 600px) {
+
+    .img {
+        background-color: rgba(255, 255, 255, 0);
+    }
+
+    img {
+        width: 120px; /* Tamanho fixo para mobile */
+        height: 120px;
+        border-radius: 50%;
+        object-fit: cover; /* Garante que a imagem não distorça */
+        border: 3px solid rgba(255, 255, 255, 0.2);
+    }
+
+    nav a {
+        font-size: 15px;
+        padding: 5px;
+    }
+
 }
