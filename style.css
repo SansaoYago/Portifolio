@@ -179,6 +179,10 @@ nav>a {
 
 @media screen and (max-width: 600px) {
 
+    .perfil {
+        flex-direction: column-reverse; /* Foto em cima, código embaixo no mobile */
+        align-items: center;
+    }
 
     .img {
         background-color: rgba(255, 255, 255, 0);
