@@ -7,6 +7,60 @@
     <title>Portifólio</title>
     <link rel="stylesheet" href="style.css">
 </head>
+<style>
+    .github-graph {
+        width: 100%;
+        max-width: 800px;
+        /* Evita que ele cresça demais em telas gigantes */
+        height: auto;
+        display: block;
+        margin: 0 auto;
+        /* Centraliza */
+        filter: brightness(0.9) contrast(1.1);
+    }
+
+    /* Ajuste do container para combinar com seu fundo escuro */
+    .github-container {
+        width: fit-content;
+
+        transform: translateX(-95%);
+        transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+
+
+        padding: 10px 0px;
+        border-radius: 0px 15px 15px 0px;
+        background-color: #0d1117;
+        /* Fundo padrão dark do GitHub */
+        border-top: 1px solid #30363d;
+        display: flex;
+        justify-content: center;
+    }
+
+    .github-container.is-open {
+        transform: translateX(0);
+        /* Volta para a posição visível */
+    }
+
+    .btn-graph {
+        color: white;
+        font-weight: 800;
+        cursor: pointer;
+        background-color: rgba(148, 148, 148, 0.585);
+        border-radius: 15px 2px 2px 15px;
+        border: none;
+        padding: 3px;
+        margin-left: 3px;
+        transition: 250ms;
+    }
+
+    .btn-graph:hover {
+        background-color: rgba(215, 215, 215, 0.797);
+    }
+
+    #btnO {
+        display: none;
+    }
+</style>
 
 <body>
     <div class="container">
@@ -18,18 +72,47 @@
                 <a href="#">Formação</a>
             </nav>
             <section class="perfil">
-            <div class="code-overlay">
-                <pre class="code-display">
+                <div class="code-overlay">
+                    <pre class="code-display">
 <code id="animated-code"></code>
                 </pre>
-            </div>
-            <span class="img"><img src="img/foto-perfil.png" alt="Foto de perfil"></span>
+                </div>
+                <span class="img"><img src="img/foto-perfil.png" alt="Foto de perfil"></span>
             </section>
         </header>
-        <main></main>
+        <main>
+            <section class="github-container">
+                <img src="https://ghchart.rshah.org/39d353/SansaoYago" alt="Gráfico de Contribuições do GitHub"
+                    class="github-graph" />
+                <button id="btnM" class="btn-graph">></button>
+                <button id="btnO" class="btn-graph">
+                    <</button>
+            </section>
+        </main>
         <footer></footer>
     </div>
 
+    <script>
+
+        const mostrar = document.getElementById("btnM");
+        const ocultar = document.getElementById("btnO");
+        const graphGHb = document.querySelector(".github-container");
+
+        // Função para Mostrar
+        mostrar.addEventListener("click", () => {
+            graphGHb.classList.add("is-open")
+            mostrar.style.display = "none";
+            ocultar.style.display = "block"; // Corrigido aqui
+        });
+
+        // Função para Ocultar (Botão <)
+        ocultar.addEventListener("click", () => {
+            graphGHb.classList.remove("is-open")
+            ocultar.style.display = "none";
+            mostrar.style.display = "block";
+        });
+
+    </script>
     <script src="js/code-animation.js"></script>
 </body>
 

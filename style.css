@@ -19,10 +19,7 @@ header {
     overflow: hidden; /* IMPEDE QUE CONTEÚDO EXTRAVAZE */
 }
 
-img {
-    width: 80%;
-    border-radius: 50%;
-}
+
 
 nav {
     width: 100%;
@@ -47,14 +44,17 @@ nav>a {
     padding: 15px 0px;
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
+
+
 
 /* CONTAINER DO CÓDIGO SEM FUNDO */
 .code-overlay {
+    align-self: flex-end;
+    flex: 0 0 300px;
     font-family: 'Courier New', monospace;
-    font-size: 14px;
     padding: 15px;
-    max-width: 800px;
     height: 150px; /* ALTURA FIXA PARA O CÓDIGO */
     overflow: hidden;
     position: relative;
@@ -149,30 +149,45 @@ nav>a {
 }
 
 /* PERFIL SECTION - AJUSTES */
-.perfil {
-    width: 100%;
-    padding: 15px 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start; /* Alinha no topo */
-    height: 180px; /* Altura controlada */
-    position: relative;
-}
+
 
 /* IMAGEM DE PERFIL */
 .img {
-    background-color: rgba(255, 255, 255, 0.421);
-    padding: 10px 0px 5px 10px;
-    border-radius: 45% 0% 0% 45%;
+    display: flex;
+    align-items: center;
+    justify-content: center;    
+    /* Fundo com transparência */
+    background-color: rgba(255, 255, 255, 0.2); 
+    
+    /* Cria um círculo perfeito baseado na largura */
+    width: 220px; 
+    height: 220px;
+    border-radius: 50% 0% 0% 50%; 
+    
+    /* O segredo: bordas e sombras em vez de padding irregular */
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    box-shadow: -5px 0 15px rgba(255, 255, 255, 0.05);
+    overflow: hidden;
+}
+
+.img img {
+    width: 90%; /* Deixa um espaço para o contorno aparecer */
+    height: 90%;
+    object-fit: cover;
+    border-radius: 50%;
 }
 
 @media screen and (max-width: 600px) {
 
+
     .img {
         background-color: rgba(255, 255, 255, 0);
+        width: fit-content;
+        height: fit-content;
+        padding: 10px;
     }
 
-    img {
+    .img img {
         width: 120px; /* Tamanho fixo para mobile */
         height: 120px;
         border-radius: 50%;
@@ -183,6 +198,12 @@ nav>a {
     nav a {
         font-size: 15px;
         padding: 5px;
+    }
+    .code-overlay {
+        flex: 0 1 auto;
+    }
+    .code-display {
+        font-size: 12px;
     }
 
 }
