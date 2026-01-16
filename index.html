@@ -73,46 +73,18 @@
             </nav>
             <section class="perfil">
                 <div class="code-overlay">
-                    <pre class="code-display">
-<code id="animated-code"></code>
-                </pre>
+                    <canvas id="snake-canvas"></canvas>
+                    <pre class="code-display"><code id="animated-code"></code></pre>
                 </div>
                 <span class="img"><img src="img/foto-perfil.png" alt="Foto de perfil"></span>
             </section>
         </header>
-        <main>
-            <section class="github-container">
-                <img src="https://ghchart.rshah.org/39d353/SansaoYago" alt="Gráfico de Contribuições do GitHub"
-                    class="github-graph" />
-                <button id="btnM" class="btn-graph">></button>
-                <button id="btnO" class="btn-graph">
-                    <</button>
-            </section>
-        </main>
+        
+        <main></main>
+        
         <footer></footer>
     </div>
 
-    <script>
-
-        const mostrar = document.getElementById("btnM");
-        const ocultar = document.getElementById("btnO");
-        const graphGHb = document.querySelector(".github-container");
-
-        // Função para Mostrar
-        mostrar.addEventListener("click", () => {
-            graphGHb.classList.add("is-open")
-            mostrar.style.display = "none";
-            ocultar.style.display = "block"; // Corrigido aqui
-        });
-
-        // Função para Ocultar (Botão <)
-        ocultar.addEventListener("click", () => {
-            graphGHb.classList.remove("is-open")
-            ocultar.style.display = "none";
-            mostrar.style.display = "block";
-        });
-
-    </script>
     <script src="js/code-animation.js"></script>
 </body>
 
