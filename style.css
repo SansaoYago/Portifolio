@@ -5,8 +5,12 @@
     box-sizing: border-box;
 }
 
+body {
+  background: url('img/background-header.png') center/cover;  
+}
+
 header {
-    background: url('img/background-header.png') center/cover;
+    
     gap: 15px;
     display: flex;
     flex-flow: column;
