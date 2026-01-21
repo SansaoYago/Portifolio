@@ -8,60 +8,8 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <style>
-    .github-graph {
-        width: 100%;
-        max-width: 800px;
-        /* Evita que ele cresça demais em telas gigantes */
-        height: auto;
-        display: block;
-        margin: 0 auto;
-        /* Centraliza */
-        filter: brightness(0.9) contrast(1.1);
-    }
-
-    /* Ajuste do container para combinar com seu fundo escuro */
-    .github-container {
-        width: fit-content;
-
-        transform: translateX(-95%);
-        transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-
-
-        padding: 10px 0px;
-        border-radius: 0px 15px 15px 0px;
-        background-color: #0d1117;
-        /* Fundo padrão dark do GitHub */
-        border-top: 1px solid #30363d;
-        display: flex;
-        justify-content: center;
-    }
-
-    .github-container.is-open {
-        transform: translateX(0);
-        /* Volta para a posição visível */
-    }
-
-    .btn-graph {
-        color: white;
-        font-weight: 800;
-        cursor: pointer;
-        background-color: rgba(148, 148, 148, 0.585);
-        border-radius: 15px 2px 2px 15px;
-        border: none;
-        padding: 3px;
-        margin-left: 3px;
-        transition: 250ms;
-    }
-
-    .btn-graph:hover {
-        background-color: rgba(215, 215, 215, 0.797);
-    }
-
-    #btnO {
-        display: none;
-    }
+    
 </style>
-
 <body>
     <div class="container">
         <header>

@@ -6,21 +6,23 @@
 }
 
 body {
-  background: url('img/background-header.png') center/cover;  
+    background: url('img/background-header.png') center/cover;
 }
 
 header {
-    
     gap: 15px;
     display: flex;
     flex-flow: column;
     align-items: flex-end;
-    height: 330px; /* ALTURA FIXA */
-    min-height: 330px; /* PREVINE CRESCIMENTO */
+    height: 330px;
+    /* ALTURA FIXA */
+    min-height: 330px;
+    /* PREVINE CRESCIMENTO */
     max-height: 300px;
     padding: 0px 0px;
     position: relative;
-    overflow: hidden; /* IMPEDE QUE CONTEÚDO EXTRAVAZE */
+    overflow: hidden;
+    /* IMPEDE QUE CONTEÚDO EXTRAVAZE */
 }
 
 
@@ -35,17 +37,30 @@ nav {
     gap: 5px;
 }
 
-nav>a {
+nav a {
+    font-size: 25px;
     text-decoration: none;
-    background-color: rgba(241, 241, 241, 0.544);
-    padding: 8px;
-
+    padding: 4px;
+    border-radius: 10px;
     color: white;
+    display: flex;
+    align-items: center;
+    transition: 220ms ease-out;
+}
+
+nav a::after {
+    content: url('img/tag32.png');
+}
+
+nav a:hover {
+    background-color: rgba(77, 16, 168, 0.37);
+    box-shadow: 0px 0px 5px 0px rgba(255, 255, 255, 0.326);
+    transform: translate(0px, 2px);
 }
 
 .perfil {
-    width: 100%;
-    padding: 15px 0px;
+    width: 80%;
+    height: fit-content;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -57,16 +72,18 @@ nav>a {
 .code-overlay {
     position: relative;
     align-self: flex-end;
-    
+
     flex: 0 0 300px;
     font-family: 'Courier New', monospace;
     padding: 15px;
-    min-height: 180px; /* ALTURA FIXA PARA O CÓDIGO */
+    min-height: 180px;
+    /* ALTURA FIXA PARA O CÓDIGO */
     overflow: hidden;
     z-index: 2;
-    text-shadow: 
+    text-shadow:
         0 0 10px rgba(10, 175, 255, 0.3),
-        0 0 2px rgba(0, 0, 0, 0.8); /* SOMBRA PARA CONTRASTE */
+        0 0 2px rgba(0, 0, 0, 0.8);
+    /* SOMBRA PARA CONTRASTE */
 }
 
 #snake-canvas {
@@ -75,8 +92,10 @@ nav>a {
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 1;
-    opacity: 0; /* Começa invisível */
-    transition: opacity 0.5s ease; /* Transição suave ao aparecer */
+    opacity: 0;
+    /* Começa invisível */
+    transition: opacity 0.5s ease;
+    /* Transição suave ao aparecer */
     pointer-events: none;
 }
 
@@ -85,49 +104,14 @@ nav>a {
     margin: 0;
     color: #f8f8f2;
     line-height: 1.6;
-    white-space: pre; /* CRÍTICO: preserva espaços e quebras */
+    white-space: pre;
+    /* CRÍTICO: preserva espaços e quebras */
     word-wrap: normal;
     background: transparent !important;
     font-family: 'Courier New', monospace;
     font-size: 14px;
-    tab-size: 4; /* Define que \t = 4 espaços */
-}
-
-/* SYNTAX HIGHLIGHTING (ajustado para brilhar mais) */
-.keyword { 
-    color: #ff79c6; 
-    text-shadow: 0 0 8px rgba(255, 121, 198, 0.5);
-}
-.function { 
-    color: #50fa7b; 
-    text-shadow: 0 0 8px rgba(80, 250, 123, 0.5);
-}
-.string { 
-    color: #f1fa8c; 
-    text-shadow: 0 0 8px rgba(241, 250, 140, 0.5);
-}
-.comment { 
-    color: #6272a4; 
-    font-style: italic;
-    opacity: 0.8;
-}
-.operator { 
-    color: #ff79c6; 
-}
-.punctuation { 
-    color: #f8f8f2; 
-}
-.number { 
-    color: #bd93f9; 
-    text-shadow: 0 0 8px rgba(189, 147, 249, 0.5);
-}
-.class { 
-    color: #8be9fd; 
-    text-shadow: 0 0 8px rgba(139, 233, 253, 0.5);
-}
-.parameter { 
-    color: #ffb86c; 
-    text-shadow: 0 0 8px rgba(255, 184, 108, 0.5);
+    tab-size: 4;
+    /* Define que \t = 4 espaços */
 }
 
 /* CURSOR MAIS VISÍVEL */
@@ -137,21 +121,31 @@ nav>a {
     height: 18px;
     background-color: #0af;
     margin-left: 2px;
-    animation: blink 1s infinite;
+    animation: blink 550ms infinite;
     vertical-align: middle;
     box-shadow: 0 0 10px #0af;
 }
 
 @keyframes blink {
-    0%, 50% { opacity: 1; }
-    51%, 100% { opacity: 0; }
+
+    0%,
+    50% {
+        opacity: 1;
+    }
+
+    51%,
+    100% {
+        opacity: 0;
+    }
 }
 
 #animated-code::after {
     content: '';
     display: inline-block;
-    width: 12px; /* LARGURA AUMENTADA */
-    height: 20px; /* ALTURA AUMENTADA */
+    width: 12px;
+    /* LARGURA AUMENTADA */
+    height: 20px;
+    /* ALTURA AUMENTADA */
     background-color: rgb(211, 213, 214);
     margin-left: 4px;
     animation: blink 500ms infinite;
@@ -161,8 +155,16 @@ nav>a {
 }
 
 @keyframes blink {
-    0%, 50% { opacity: 1; }
-    51%, 100% { opacity: 0; }
+
+    0%,
+    50% {
+        opacity: 1;
+    }
+
+    51%,
+    100% {
+        opacity: 0;
+    }
 }
 
 /* PERFIL SECTION - AJUSTES */
@@ -172,15 +174,15 @@ nav>a {
 .img {
     display: flex;
     align-items: center;
-    justify-content: center;    
+    justify-content: center;
     /* Fundo com transparência */
-    background-color: rgba(255, 255, 255, 0.2); 
-    
+    background-color: rgba(255, 255, 255, 0.2);
+
     /* Cria um círculo perfeito baseado na largura */
-    width: 220px; 
-    height: 220px;
-    border-radius: 50% 0% 0% 50%; 
-    
+    width: 250px;
+    height: 250px;
+    border-radius: 50% 0% 0% 50%;
+
     /* O segredo: bordas e sombras em vez de padding irregular */
     border: 2px solid rgba(255, 255, 255, 0.1);
     box-shadow: -5px 0 15px rgba(255, 255, 255, 0.05);
@@ -188,7 +190,8 @@ nav>a {
 }
 
 .img img {
-    width: 90%; /* Deixa um espaço para o contorno aparecer */
+    width: 90%;
+    /* Deixa um espaço para o contorno aparecer */
     height: 90%;
     object-fit: cover;
     border-radius: 50%;
@@ -197,6 +200,7 @@ nav>a {
 @media screen and (max-width: 600px) {
 
     .perfil {
+        width: 100%;
         align-items: center;
     }
 
@@ -207,10 +211,12 @@ nav>a {
     }
 
     .img img {
-        width: 120px; /* Tamanho fixo para mobile */
+        width: 120px;
+        /* Tamanho fixo para mobile */
         height: 120px;
         border-radius: 50%;
-        object-fit: cover; /* Garante que a imagem não distorça */
+        object-fit: cover;
+        /* Garante que a imagem não distorça */
         border: 3px solid rgba(255, 255, 255, 0.2);
     }
 
@@ -218,9 +224,15 @@ nav>a {
         font-size: 15px;
         padding: 5px;
     }
+
+    nav a::after {
+        content: url('img/tag24.png');
+    }
+
     .code-overlay {
         flex: 0 1 auto;
     }
+
     .code-display {
         font-size: 10px;
     }
