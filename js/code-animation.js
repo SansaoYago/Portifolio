@@ -220,7 +220,7 @@ function type() {
 }
 
 function digitarMes() {
-    const dataSource = usingRealData ? ' (Dados Reais)' : ' (Padrão Simulado)';
+    const dataSource = usingRealData ? '' : ' (Padrão Simulado)';
     const fraseMes = `// Contribuições: ${mesAtual} ${anoAtual}${dataSource}...`;
     
     let i = 0;

@@ -1,0 +1,82 @@
+@charset "UTF-8";
+
+#snake-canvas {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    opacity: 0;
+    /* Começa invisível */
+    transition: opacity 0.5s ease;
+    /* Transição suave ao aparecer */
+    pointer-events: none;
+}
+
+
+.code-display {
+    margin: 0;
+    color: #f8f8f2;
+    line-height: 1.6;
+    white-space: pre;
+    /* CRÍTICO: preserva espaços e quebras */
+    word-wrap: normal;
+    background: transparent !important;
+    font-family: 'Courier New', monospace;
+    font-size: 14px;
+    tab-size: 4;
+    /* Define que \t = 4 espaços */
+}
+
+/* CURSOR MAIS VISÍVEL */
+.cursor {
+    display: inline-block;
+    width: 8px;
+    height: 18px;
+    background-color: #0af;
+    margin-left: 2px;
+    animation: blink 550ms infinite;
+    vertical-align: middle;
+    box-shadow: 0 0 10px #0af;
+}
+
+@keyframes blink {
+
+    0%,
+    50% {
+        opacity: 1;
+    }
+
+    51%,
+    100% {
+        opacity: 0;
+    }
+}
+
+#animated-code::after {
+    content: '';
+    display: inline-block;
+    width: 12px;
+    /* LARGURA AUMENTADA */
+    height: 20px;
+    /* ALTURA AUMENTADA */
+    background-color: rgb(211, 213, 214);
+    margin-left: 4px;
+    animation: blink 500ms infinite;
+    vertical-align: middle;
+
+    border-radius: 1px;
+}
+
+@keyframes blink {
+
+    0%,
+    50% {
+        opacity: 1;
+    }
+
+    51%,
+    100% {
+        opacity: 0;
+    }
+}

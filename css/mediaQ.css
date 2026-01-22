@@ -1,0 +1,39 @@
+@charset "UTF-8";
+
+.perfil {
+    width: 100%;
+    align-items: center;
+    padding-right: 10px;
+}
+
+.img img {
+    width: 120px;
+    height: 250px;
+}
+
+nav  {
+   display: none;
+}
+
+nav a::after {
+    content: url('img/tag24.png');
+}
+
+.code-display {
+    font-size: 10px;
+}
+
+menu {
+    width: 100%; 
+    position: fixed;
+    bottom: 0;
+    background-color: blueviolet;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    padding: 8px 0px;
+}
+
+menu img {
+    width: 40px;
+}
