@@ -81,6 +81,19 @@ nav a:hover {
     filter: drop-shadow(-5px 0px 5px rgba(255, 255, 255, 0.218));
 }
 
+@media screen and (min-width: 600px) {
+    #btContact {
+    display: none;
+}
+
+#contatos {
+    display: none;
+}
+
+#contatos.show-contact {
+    display: none;
+}
+}
 
 menu {
     display: none;

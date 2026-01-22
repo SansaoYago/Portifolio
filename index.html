@@ -11,8 +11,9 @@
     <link rel="stylesheet" href="css/animation.css">
 </head>
 <style>
-    
+
 </style>
+
 <body>
     <div class="container">
         <header>
@@ -30,15 +31,35 @@
                 <div class="img"><img src="img/foto-port.png" alt="Foto de perfil"></div>
             </section>
         </header>
-        
+
         <main></main>
-        
+
         <footer></footer>
         <menu>
             <img src="icons/projetos.png" alt="">
-            <img src="icons/github.png" alt="">
         </menu>
+        <input id="btContact" type="button" value="▲">
+        <div style="position: relative;">
+
+            <span id="contatos">
+                <img src="icons/github.png" alt="Icone Github">
+                <img src="icons/linkedin.png" alt="Icone Linkedin">
+            </span>
+        </div>
     </div>
+    <script>
+        const button = document.getElementById("btContact")
+        const showContact = document.getElementById("contatos")
+
+        button.addEventListener("click", () => {
+            showContact.classList.toggle('show-contact')
+            if (showContact.classList.contains('show-contact')) {
+                button.value = "▼"
+            } else {
+                button.value = "▲"
+            }
+        })
+    </script>
 
     <script src="js/code-animation.js"></script>
 </body>

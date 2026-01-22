@@ -29,11 +29,52 @@ menu {
     bottom: 0;
     background-color: blueviolet;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     gap: 15px;
     padding: 8px 0px;
+    z-index: 2;
+    overflow: hidden;
 }
 
-menu img {
+#contatos img {
     width: 40px;
+}
+
+#btContact {
+    width: 45px;
+    cursor: pointer;
+    background-color: blueviolet;
+    position: absolute;
+    right: 0;
+    bottom: 80px;
+    padding: 3px 8px;
+    border: 1px solid rgba(0, 0, 0, 0.425);
+    border-bottom: none;
+    border-radius: 5px 5px 0px 0px;
+}
+
+#contatos {
+    background-color: blueviolet;
+    position: absolute;
+    right: 0;
+    
+    display: flex; /* Mantemos flex para o layout interno */
+    flex-direction: column;
+    padding: 8px 3px;
+    gap: 10px;
+    border-radius: 8px;
+    opacity: 0;
+    visibility: hidden;
+    /* Começa um pouco mais para baixo (dentro do botão) */
+    transform: translateY(280px); 
+
+    /* Transição suave */
+    transition: opacity 500ms ease, transform 500ms ease, visibility 500ms;
+}
+
+#contatos.show-contact {
+    opacity: 1;
+    visibility: visible;
+    /* Sobe para a posição final */
+    transform: translateY(250px); /* Ajuste esse valor para a distância desejada */
 }
