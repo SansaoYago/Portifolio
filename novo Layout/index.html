@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://kit.fontawesome.com/63facef115.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../css/animation.css">
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --cor-fundoVsCode: #1F1F1F;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--cor-fundoVsCode);
+        }
+
+        .container {
+            display: grid;
+            grid-template-rows: 1fr 2fr 50px;
+            grid-template-columns: 1fr 90vw 1fr;
+            height: 100vh;
+            gap: 10px;
+        }
+
+        header {
+            grid-area: 1 / 2 / 2 / -2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 15px;
+        }
+
+        header h1 {
+            color: white;
+        }
+
+        .img img {
+            width: 200px;
+            border-radius: 50%;
+        }
+
+        main {
+            grid-area: 2 / 2 / -2 / -2;
+        }
+
+        main .animation {
+            width: 100%;
+            height: 200px;
+        }
+
+        .code-overlay {
+            width: 50%;
+            margin: auto;
+        }
+
+        footer {
+            grid-area: -2 / 1 / -1 / -1;
+            padding: 10px;
+        }
+
+        #menu {
+            display: flex;
+            justify-content: space-evenly;
+        }
+
+        #menu a {
+            color: white;
+            font-size: 1.2em;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <div class="img">
+                <img src="../img/my-perfil.png" alt="">
+            </div>
+            <h1>Cristian Yago</h1>
+        </header>
+        <main>
+            <section id="home">
+                <div class="animation">
+                    <div class="code-overlay">
+                        <canvas id="snake-canvas"></canvas>
+                        <pre class="code-display"><code id="animated-code"></code></pre>
+                    </div>
+                </div>
+            </section>
+            <section id="preojects"></section>
+            <section id="training"></section>
+            <section id="about"></section>
+        </main>
+        <footer>
+            <nav id="menu">
+                <a href=""><i class="fa-solid fa-house"></i></a>
+                <a href=""><i class="fa-solid fa-compass-drafting"></i></a>
+                <a href=""><i class="fa-solid fa-brain"></i></a>
+                <a href=""><i class="fa-solid fa-user"></i></a>
+            </nav>
+        </footer>
+    </div>
+    <script src="../js/code-animation.js"></script>
+    <script src="../js/update-contributions.js"></script>
+</body>
+
+</html>
