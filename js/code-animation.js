@@ -8,7 +8,7 @@ const anoAtual = dataAtual.getFullYear();
 // Dados do snippet de código
 const codeSnippets = [
     { language: 'html', code: '<div class="container">\n  <h1>Meu Portfólio</h1>\n  <p>Bem-vindo</p>\n</div>' },
-    { language: 'css', code: '.container {\n  max-width: 1200px;\n  margin: 0 auto;\n}' },
+    { language: 'css', code: '.responsividade {\n  display: grid;\n  grid-template: auto 1fr 50px / 1fr 90vw 50px;\n  height: 100vh; \n  gap: 15px;}' },
     { language: 'javascript', code: 'function ola() {\n  console.log("Olá!");\n  return "Seja Bem Vindo!";\n}' }
 ];
 
