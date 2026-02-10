@@ -195,13 +195,13 @@ function type() {
   if (!isDeleting && charIndex <= text.length) {
     const partialText = text.substring(0, charIndex);
     const highlighted = highlightFromRules(partialText, current);
-    codeElement.innerHTML = highlighted + '<span class="blinking-cursor">|</span>';
+    codeElement.innerHTML = highlighted ;
     charIndex++;
     setTimeout(type, 50);
   } else if (isDeleting && charIndex >= 0) {
     const partialText = text.substring(0, charIndex);
     const highlighted = highlightFromRules(partialText, current);
-    codeElement.innerHTML = highlighted + '<span class="blinking-cursor">|</span>';
+    codeElement.innerHTML = highlighted;
     charIndex--;
     setTimeout(type, 30);
   } else {

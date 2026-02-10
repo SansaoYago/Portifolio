@@ -36,7 +36,7 @@
                     "gap"
                 ],
                 "values": [
-                    "grid",
+                    "grid ",
                     "auto",
                     "1fr",
                     "50px",
