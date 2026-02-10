@@ -1,0 +1,78 @@
+{
+    "snippets": [
+        {
+            "language": "html",
+            "code": "<div class=\"container\">\n  <h1>Meu Portfólio</h1>\n  <p>Bem-vindo</p>\n</div>",
+            "description": "Estrutura HTML básica",
+            "highlightRules": {
+                "tags": [
+                    "div",
+                    "h1",
+                    "p"
+                ],
+                "attributes": [
+                    "class"
+                ],
+                "strings": [
+                    "container",
+                    "Meu Portfólio",
+                    "Bem-vindo"
+                ]
+            }
+        },
+        {
+            "language": "css",
+            "code": ".responsividade {\n  display: grid;\n  grid-template-row: auto 1fr 50px;\n  grid-template-column: 1fr 90vw 50px;\n  height: 100vh; \n  gap: 15px;\n}",
+            "description": "Grid responsivo",
+            "highlightRules": {
+                "selectors": [
+                    ".responsividade"
+                ],
+                "properties": [
+                    "display",
+                    "grid-template-row",
+                    "grid-template-column",
+                    "height",
+                    "gap"
+                ],
+                "values": [
+                    "grid",
+                    "auto",
+                    "1fr",
+                    "50px",
+                    "90vw",
+                    "100vh",
+                    "15px"
+                ],
+                "units": [
+                    "px",
+                    "vw",
+                    "vh",
+                    "fr"
+                ]
+            }
+        },
+        {
+            "language": "javascript",
+            "code": "function ola() {\n  console.log(\"Olá!\");\n  return \"Seja Bem Vindo!\";\n}",
+            "description": "Função de saudação",
+            "highlightRules": {
+                "keywords": [
+                    "function",
+                    "return"
+                ],
+                "functions": [
+                    "ola"
+                ],
+                "builtins": [
+                    "console",
+                    "log"
+                ],
+                "strings": [
+                    "Olá!",
+                    "Seja Bem Vindo!"
+                ]
+            }
+        }
+    ]
+}
