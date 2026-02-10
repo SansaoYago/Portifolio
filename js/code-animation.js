@@ -340,7 +340,7 @@ function digitarMes() {
   function typing() {
     if (i <= fraseMes.length) {
       const texto = fraseMes.substring(0, i);
-      codeElement.innerHTML = `<span style="color:#8be9fd">${texto}</span><span class="blinking-cursor">|</span>`;
+      codeElement.innerHTML = `<span style="color:#8be9fd">${texto}</span><span class="blinking-cursor"></span>`;
       i++;
       setTimeout(typing, 80);
     } else {
@@ -464,7 +464,7 @@ function reiniciarCiclo() {
   isDeleting = false;
   snippetIndex = 0;
   isSnakeActive = false;
-  codeElement.innerHTML = '<span class="blinking-cursor">|</span>';
+  
   
   // Pequena pausa antes de recomeçar
   setTimeout(() => {
