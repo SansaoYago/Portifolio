@@ -56,13 +56,27 @@ main {
     grid-area: 2 / 2 / -2 / -2;
     display: flex;
     flex-direction: column;
-    height: 80vh;
+    padding-bottom: 100px;
+}
+
+.projects {
+    margin: 15px 0px;
 }
 
 main .projects h3 {
     color: white;
     padding: 5px;
     text-align: right;
+}
+
+main .projects details {
+    cursor: pointer;
+    color: white;
+}
+
+main .projects details p {
+    text-align: justify;
+    line-height: 1.5em;
 }
 
 main .projects img {
