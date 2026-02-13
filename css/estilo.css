@@ -60,11 +60,11 @@ header, #home, #projects, #training, #about {
 }
 
 footer {
-    background-color: purple;
+    background-color: #bd93f9;
     position: sticky;
     bottom: 0;
     grid-area: -2 / 1 / -1 / -1;
-    padding: 10px;
+    padding-bottom: 10px;
 }
 
 #menu {
@@ -73,7 +73,16 @@ footer {
 }
 
 #menu a {
-    
     color: white;
     font-size: 1.2em;
+    padding: 8px;
+    border-radius: 5px;
+    transition: background 350ms, color 350ms;
+    filter: drop-shadow(0px 0px 5px black);
+}
+
+#menu a:hover {
+    filter: none;
+    color: #bd93f9;
+    background-color: #50fa7a74;;
 }

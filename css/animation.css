@@ -1,5 +1,9 @@
 @charset "UTF-8";
 
+:root {
+    --cor-green: #50fa7b;
+}
+
 /* ========== ANIMAÇÃO DE TEXTO ========== */
 .code-overlay {
     width: 100%;
@@ -12,7 +16,7 @@
 .code-display {
     margin: 0;
     font-family: 'Courier New', 'Fira Code', monospace;
-    font-size: 19px !important;
+    font-size: 16px !important;
     line-height: 1.6;
     color: #f8f8f2;
     white-space: pre-wrap;
@@ -28,7 +32,7 @@
     display: inline-block;
     width: 8px;
     height: 20px;
-    background-color: #50fa7b;
+    background-color: var(--cor-green);
     margin-left: 4px;
     animation: blink 800ms infinite;
     vertical-align: middle;
