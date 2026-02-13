@@ -60,6 +60,7 @@ header, #home, #projects, #training, #about {
 }
 
 footer {
+    background-color: purple;
     position: sticky;
     bottom: 0;
     grid-area: -2 / 1 / -1 / -1;
@@ -72,6 +73,7 @@ footer {
 }
 
 #menu a {
+    
     color: white;
     font-size: 1.2em;
 }

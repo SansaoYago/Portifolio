@@ -12,7 +12,7 @@
 .code-display {
     margin: 0;
     font-family: 'Courier New', 'Fira Code', monospace;
-    font-size: 14px;
+    font-size: 19px !important;
     line-height: 1.6;
     color: #f8f8f2;
     white-space: pre-wrap;
