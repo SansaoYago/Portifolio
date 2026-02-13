@@ -3,7 +3,7 @@
 /* ========== ANIMAÇÃO DE TEXTO ========== */
 .code-overlay {
     width: 100%;
-    height: 250px;
+    height: 200px;
     border-radius: 8px;
     padding: 20px;
     margin-bottom: 20px;
@@ -67,7 +67,7 @@
 #contributions-message {
     width: 100%;
     color: #8be9fd;
-    font-size: 20px !important;
+    font-size: 15px !important;
     font-family: 'Courier New', monospace;
     padding: 8px 0;
     margin-bottom: 10px;
