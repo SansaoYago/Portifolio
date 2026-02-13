@@ -1,3 +1,5 @@
+// code-animation.js - VERSÃO REFATORADA
+
 // CONFIGURAÇÕES GLOBAIS
 const meses = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", 
                "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"];
@@ -5,15 +7,18 @@ const dataAtual = new Date();
 const mesAtual = meses[dataAtual.getMonth()];
 const anoAtual = dataAtual.getFullYear();
 
-// Variáveis globais
+// Variáveis globais - AGORA SEPARADAS
 let codeSnippets = [];
 let snippetIndex = 0;
 let charIndex = 0;
 let isDeleting = false;
+
+// Variáveis da Cobrinha - INDEPENDENTES
 let snakeInterval = null;
 let gridData = [];
 let usingRealData = false;
 let isSnakeActive = false;
+let contributionsMessageDisplayed = false;
 
 // Elementos DOM
 let codeElement, canvas, ctx;
@@ -26,7 +31,7 @@ const colors = {
 };
 
 // ------------------------------------------------------------------
-// CARREGAR SNIPPETS DO JSON
+// ANIMAÇÃO DE TEXTO - COMPLETAMENTE INDEPENDENTE
 // ------------------------------------------------------------------
 
 async function loadCodeSnippets() {
@@ -37,11 +42,9 @@ async function loadCodeSnippets() {
     const data = await response.json();
     codeSnippets = data.snippets;
     console.log(`✅ ${codeSnippets.length} snippets carregados do JSON`);
-    
     return true;
   } catch (error) {
     console.error('❌ Erro ao carregar snippets:', error);
-    
     // Fallback: snippets padrão
     codeSnippets = [
       { 
@@ -57,14 +60,9 @@ async function loadCodeSnippets() {
         code: 'function ola() {\n  console.log("Olá!");\n  return "Seja Bem Vindo!";\n}'
       }
     ];
-    
     return false;
   }
 }
-
-// ------------------------------------------------------------------
-// HIGHLIGHT BASEADO NAS REGRAS DO JSON
-// ------------------------------------------------------------------
 
 function highlightFromRules(text, snippet) {
   if (!text || !snippet.highlightRules) {
@@ -77,7 +75,6 @@ function highlightFromRules(text, snippet) {
   
   // Aplicar regras específicas por linguagem
   if (lang === 'html') {
-    // Tags
     rules.tags?.forEach(tag => {
       result = result.replace(
         new RegExp(`&lt;${tag}(?![\\w-])|&lt;\\/${tag}(?![\\w-])`, 'g'),
@@ -85,7 +82,6 @@ function highlightFromRules(text, snippet) {
       );
     });
     
-    // Atributos
     rules.attributes?.forEach(attr => {
       result = result.replace(
         new RegExp(`\\s${attr}=`, 'g'),
@@ -93,7 +89,6 @@ function highlightFromRules(text, snippet) {
       );
     });
     
-    // Strings
     rules.strings?.forEach(str => {
       result = result.replace(
         new RegExp(`"${str}"`, 'g'),
@@ -102,7 +97,6 @@ function highlightFromRules(text, snippet) {
     });
     
   } else if (lang === 'css') {
-    // Seletores
     rules.selectors?.forEach(selector => {
       result = result.replace(
         new RegExp(selector.replace('.', '\\.'), 'g'),
@@ -110,7 +104,6 @@ function highlightFromRules(text, snippet) {
       );
     });
     
-    // Propriedades
     rules.properties?.forEach(prop => {
       result = result.replace(
         new RegExp(`${prop}(?=\\s*:)`, 'g'),
@@ -118,7 +111,6 @@ function highlightFromRules(text, snippet) {
       );
     });
     
-    // Valores
     rules.values?.forEach(value => {
       result = result.replace(
         new RegExp(`\\b${value}\\b`, 'g'),
@@ -126,7 +118,6 @@ function highlightFromRules(text, snippet) {
       );
     });
     
-    // Unidades
     rules.units?.forEach(unit => {
       result = result.replace(
         new RegExp(`(\\d+)(${unit})(?![\\w-])`, 'g'),
@@ -135,7 +126,6 @@ function highlightFromRules(text, snippet) {
     });
     
   } else if (lang === 'javascript') {
-    // Palavras-chave
     rules.keywords?.forEach(keyword => {
       result = result.replace(
         new RegExp(`\\b${keyword}\\b`, 'g'),
@@ -143,7 +133,6 @@ function highlightFromRules(text, snippet) {
       );
     });
     
-    // Funções
     rules.functions?.forEach(func => {
       result = result.replace(
         new RegExp(`\\b${func}(?=\\s*\\()`, 'g'),
@@ -151,7 +140,6 @@ function highlightFromRules(text, snippet) {
       );
     });
     
-    // Built-ins
     rules.builtins?.forEach(builtin => {
       result = result.replace(
         new RegExp(`\\b${builtin}\\b`, 'g'),
@@ -159,7 +147,6 @@ function highlightFromRules(text, snippet) {
       );
     });
     
-    // Strings
     rules.strings?.forEach(str => {
       result = result.replace(
         new RegExp(`"${str}"`, 'g'),
@@ -171,7 +158,6 @@ function highlightFromRules(text, snippet) {
   return result;
 }
 
-// Função auxiliar de escape
 function escapeHTML(text) {
   if (!text) return '';
   return text
@@ -182,10 +168,7 @@ function escapeHTML(text) {
     .replace(/  /g, '&nbsp;&nbsp;');
 }
 
-// ------------------------------------------------------------------
-// FUNÇÃO DE ANIMAÇÃO - CORRIGIDA PARA O FLUXO CORRETO
-// ------------------------------------------------------------------
-
+// ANIMAÇÃO DE TEXTO - AGORA É UM LOOP INFINITO E INDEPENDENTE
 function type() {
   if (codeSnippets.length === 0) return;
   
@@ -195,28 +178,19 @@ function type() {
   if (!isDeleting && charIndex <= text.length) {
     const partialText = text.substring(0, charIndex);
     const highlighted = highlightFromRules(partialText, current);
-    codeElement.innerHTML = highlighted ;
+    codeElement.innerHTML = highlighted + '<span class="blinking-cursor"></span>';
     charIndex++;
     setTimeout(type, 50);
   } else if (isDeleting && charIndex >= 0) {
     const partialText = text.substring(0, charIndex);
     const highlighted = highlightFromRules(partialText, current);
-    codeElement.innerHTML = highlighted;
+    codeElement.innerHTML = highlighted + '<span class="blinking-cursor"></span>';
     charIndex--;
     setTimeout(type, 30);
   } else {
     isDeleting = !isDeleting;
     if (!isDeleting) {
-      snippetIndex++;
-      
-      // VERIFICAÇÃO CRÍTICA: Se chegou no último snippet (JavaScript)
-      if (snippetIndex >= codeSnippets.length) {
-        console.log('✅ Todos os snippets foram exibidos. Iniciando mensagem do GitHub...');
-        snippetIndex = 0; // Reset para o próximo ciclo
-        digitarMes(); // Chama a mensagem do GitHub
-        return;
-      }
-      
+      snippetIndex = (snippetIndex + 1) % codeSnippets.length; // LOOP INFINITO!
       setTimeout(type, 1000);
     } else {
       setTimeout(type, 500);
@@ -225,7 +199,7 @@ function type() {
 }
 
 // ------------------------------------------------------------------
-// FUNÇÕES DO GITHUB
+// ANIMAÇÃO DA COBRINHA - COMPLETAMENTE INDEPENDENTE
 // ------------------------------------------------------------------
 
 async function fetchRealContributions() {
@@ -325,40 +299,33 @@ function generateGridData(contributionsData = null) {
   return grid;
 }
 
-// ------------------------------------------------------------------
-// MENSAGEM DO GITHUB E ANIMAÇÃO DA COBRINHA
-// ------------------------------------------------------------------
-
-function digitarMes() {
-  isSnakeActive = true;
-  const dataSource = usingRealData ? '' : ' (Padrão Simulado)';
-  const fraseMes = `// Contribuições: ${mesAtual} ${anoAtual}${dataSource}...`;
-  
-  let i = 0;
-  codeElement.innerHTML = '';
-
-  function typing() {
-    if (i <= fraseMes.length) {
-      const texto = fraseMes.substring(0, i);
-      codeElement.innerHTML = `<span style="color:#8be9fd">${texto}</span><span class="blinking-cursor"></span>`;
-      i++;
-      setTimeout(typing, 80);
-    } else {
-      console.log('🐍 Iniciando animação da cobrinha...');
-      setTimeout(iniciarCobra, 1000); // Pequena pausa antes da cobrinha
-    }
-  }
-  typing();
-}
-
-function iniciarCobra() {
-  if (!canvas || !gridData || gridData.length === 0) {
-    console.error('Não foi possível iniciar a cobrinha');
-    reiniciarCiclo();
+// MENSAGEM DAS CONTRIBUIÇÕES - AGORA APARECE NO CANVAS/DIRETAMENTE
+// MENSAGEM DAS CONTRIBUIÇÕES - AGORA DENTRO DA DIV.SNAKE
+function drawContributionsMessage() {
+  const messageElement = document.getElementById('contributions-message');
+  if (!messageElement) {
+    console.warn('⚠️ Elemento #contributions-message não encontrado');
     return;
   }
   
+  const dataSource = usingRealData ? '' : ' (Simulado)';
+  const message = `// GitHub: ${mesAtual} ${anoAtual}${dataSource}`;
+  
+  messageElement.innerHTML = message;
+  messageElement.style.display = 'block';
+}
+
+// INICIAR COBRINHA - AGORA COM LOOP CONTÍNUO
+function iniciarCobra() {
+  if (!canvas || !gridData || gridData.length === 0) {
+    console.error('Não foi possível iniciar a cobrinha');
+    setTimeout(iniciarCobra, 2000);
+    return;
+  }
+  
+  isSnakeActive = true;
   console.log('🐍 Animação da cobrinha iniciada!');
+  
   canvas.style.opacity = "1";
   canvas.style.display = "block";
   
@@ -382,16 +349,18 @@ function iniciarCobra() {
     drawRealGrid(snake, trail, rows, cols, size, gap);
     
     if (snake.x >= cols) {
-      console.log('✅ Cobrinha completou o percurso!');
-      clearInterval(snakeInterval);
-      snakeInterval = null;
-      setTimeout(() => {
-        canvas.style.opacity = "0";
-        setTimeout(() => {
-          canvas.style.display = "none";
-          reiniciarCiclo();
-        }, 1000);
-      }, 2000);
+      // RESET - Volta ao início para loop contínuo
+      snake = { x: 0, y: 0 };
+      trail = [];
+      
+      // Atualiza dados a cada ciclo completo
+      setTimeout(async () => {
+        const realData = await fetchRealContributions();
+        if (realData) {
+          gridData = generateGridData(realData);
+        }
+        drawContributionsMessage();
+      }, 100);
     }
   }, 80);
 }
@@ -413,7 +382,7 @@ function drawRealGrid(snake, trail, rows, cols, size, gap) {
       } else if (hasBeenVisited) {
         color = getColorFromLevel(level);
       } else {
-        color = 'rgba(0,0,0,0)';
+        color = '#161b22'; // Cor de fundo escura para células não visitadas
       }
       
       ctx.fillStyle = color;
@@ -449,7 +418,7 @@ function moveRealSnake(snake, trail, rows, cols) {
 
 function getColorFromLevel(level) {
   const colors = [
-    '#161b2200',
+    '#161b22', // fundo escuro
     '#0e4429',
     '#006d32',
     '#26a641',
@@ -458,23 +427,8 @@ function getColorFromLevel(level) {
   return colors[level] || colors[0];
 }
 
-function reiniciarCiclo() {
-  console.log('🔄 Reiniciando ciclo completo...');
-  charIndex = 0;
-  isDeleting = false;
-  snippetIndex = 0;
-  isSnakeActive = false;
-  
-  
-  // Pequena pausa antes de recomeçar
-  setTimeout(() => {
-    console.log('⌨️ Reiniciando digitação dos snippets...');
-    type();
-  }, 2000);
-}
-
 // ------------------------------------------------------------------
-// INICIALIZAÇÃO PRINCIPAL
+// INICIALIZAÇÃO - TUDO SEPARADO E INDEPENDENTE
 // ------------------------------------------------------------------
 
 document.addEventListener('DOMContentLoaded', async () => {
@@ -492,40 +446,37 @@ document.addEventListener('DOMContentLoaded', async () => {
     console.warn('⚠️ Canvas não encontrado, cobrinha não funcionará');
   } else {
     ctx = canvas.getContext('2d');
-    canvas.style.display = "none"; // Começa escondido
-    canvas.style.opacity = "0";
-    canvas.style.transition = "opacity 1s";
+    canvas.style.display = "block"; // Já começa visível
+    canvas.style.opacity = "1";
+    canvas.style.transition = "opacity 0.5s";
   }
   
   // 1. Carregar snippets
-  console.log('📂 Carregando snippets...');
   await loadCodeSnippets();
   
-  // 2. Gerar grid (inicialmente com dados simulados)
-  console.log('📊 Gerando grid inicial...');
-  gridData = generateGridData();
-  
-  // 3. Iniciar animação dos snippets
-  console.log('⌨️ Iniciando animação de código...');
+  // 2. Iniciar animação de texto (LOOP INFINITO E INDEPENDENTE)
+  console.log('⌨️ Iniciando animação de código (loop infinito)...');
   type();
   
-  // 4. Buscar dados reais em background
+  // 3. Configurar dados iniciais da cobrinha
+  console.log('📊 Gerando grid inicial...');
+  gridData = generateGridData();
+  drawContributionsMessage();
+  // 4. Iniciar cobrinha (INDEPENDENTE E CONTÍNUA)
+  setTimeout(() => {
+    iniciarCobra();
+  }, 500); // Pequeno delay, mas independente
+  
+  // 5. Buscar dados reais e atualizar a cobrinha em tempo real
   setTimeout(async () => {
     try {
-      console.log('🌐 Buscando dados do GitHub...');
       const realData = await fetchRealContributions();
-      
       if (realData) {
         console.log('🔄 Atualizando grid com dados reais...');
         gridData = generateGridData(realData);
+        drawContributionsMessage();
         
-        // Se a cobrinha já estiver ativa, reiniciar com novos dados
-        if (isSnakeActive && snakeInterval) {
-          console.log('🔄 Atualizando cobrinha em tempo real...');
-          clearInterval(snakeInterval);
-          snakeInterval = null;
-          setTimeout(() => iniciarCobra(), 500);
-        }
+        // Se a cobrinha estiver ativa, ela vai usar os novos dados no próximo ciclo
       }
     } catch (error) {
       console.log('⚠️ Continuando com dados simulados');

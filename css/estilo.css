@@ -24,11 +24,13 @@ body {
 }
 
 header {
+    height: 90vh;
     grid-area: 1 / 2 / 2 / -2;
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 15px;
+    gap: 20px;
 }
 
 header h1 {
@@ -45,9 +47,16 @@ main {
     grid-area: 2 / 2 / -2 / -2;
 }
 
-main .animation {
+main #home {
+    height: 50vh;
+}
+header .animation {
     width: 100%;
     height: 200px;
+}
+
+header, #home, #projects, #training, #about {
+    border: 2px dotted red;
 }
 
 footer {

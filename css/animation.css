@@ -1,83 +1,120 @@
 @charset "UTF-8";
 
-#snake-canvas {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 1;
-    opacity: 0;
-    /* Começa invisível */
-    transition: opacity 0.5s ease;
-    /* Transição suave ao aparecer */
-    pointer-events: none;
+/* ========== ANIMAÇÃO DE TEXTO ========== */
+.code-overlay {
+    width: 100%;
+    height: 250px;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
 }
-
 
 .code-display {
     margin: 0;
-    color: #f8f8f2;
-    line-height: 1.6;
-    white-space: pre;
-    /* CRÍTICO: preserva espaços e quebras */
-    word-wrap: normal;
-    background: transparent !important;
-    font-family: 'Courier New', monospace;
+    font-family: 'Courier New', 'Fira Code', monospace;
     font-size: 14px;
-    tab-size: 4;
-    /* Define que \t = 4 espaços */
+    line-height: 1.6;
+    color: #f8f8f2;
+    white-space: pre-wrap;
+    word-break: break-word;
 }
 
-/* CURSOR MAIS VISÍVEL */
-.cursor {
+#animated-code {
+    display: block;
+}
+
+/* CURSOR MODERNO - AGORA FUNCIONA COM O JS */
+.blinking-cursor {
     display: inline-block;
     width: 8px;
-    height: 18px;
-    background-color: #0af;
-    margin-left: 2px;
-    animation: blink 250ms infinite;
-    vertical-align: middle;
-    box-shadow: 0 0 10px #0af;
-}
-
-@keyframes blink {
-
-    0%,
-    50% {
-        opacity: 1;
-    }
-
-    51%,
-    100% {
-        opacity: 0;
-    }
-}
-
-#animated-code::after {
-    content: '';
-    display: inline-block;
-    width: 12px;
-    /* LARGURA AUMENTADA */
     height: 20px;
-    /* ALTURA AUMENTADA */
-    background-color: rgb(211, 213, 214);
+    background-color: #50fa7b;
     margin-left: 4px;
-    animation: blink 500ms infinite;
+    animation: blink 800ms infinite;
     vertical-align: middle;
-
-    border-radius: 1px;
+    box-shadow: 0 0 8px #50fa7b;
+    border-radius: 2px;
 }
 
 @keyframes blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+}
 
-    0%,
-    50% {
-        opacity: 1;
+/* ========== ANIMAÇÃO DA COBRINHA ========== */
+.snake {
+    position: relative;
+    border-radius: 8px;
+    padding: 15px;
+    margin-top: 10px;
+    min-height: 120px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+#snake-canvas {
+    display: block;
+    opacity: 1;
+    pointer-events: none;
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+    align-self: center;
+}
+
+/* ========== MENSAGEM DAS CONTRIBUIÇÕES ========== */
+#contributions-message {
+    width: 100%;
+    color: #8be9fd;
+    font-size: 20px !important;
+    font-family: 'Courier New', monospace;
+    padding: 8px 0;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #44475a;
+    text-align: left;
+}
+
+/* ========== RESPONSIVIDADE ========== */
+@media (max-width: 768px) {
+    .code-overlay {
+        min-height: 120px;
+        padding: 15px;
     }
-
-    51%,
-    100% {
-        opacity: 0;
+    
+    .code-display {
+        font-size: 12px;
+    }
+    
+    .blinking-cursor {
+        width: 6px;
+        height: 16px;
+    }
+    
+    .snake {
+        padding: 10px;
+    }
+    
+    #contributions-message {
+        bottom: 5px;
+        right: 10px;
+        font-size: 10px;
+        padding: 3px 8px;
     }
 }
 
+/* ========== CORES PARA HIGHLIGHT DE CÓDIGO ========== */
+/* Essas classes podem ser úteis se você quiser estilizar manualmente */
+.html-tag { color: #ff79c6; }
+.html-attr { color: #50fa7b; }
+.html-string { color: #f1fa8c; }
+
+.css-selector { color: #ff79c6; }
+.css-prop { color: #50fa7b; }
+.css-value { color: #f1fa8c; }
+.css-unit { color: #bd93f9; }
+
+.js-keyword { color: #ff79c6; }
+.js-function { color: #50fa7b; }
+.js-builtin { color: #8be9fd; }
+.js-string { color: #f1fa8c; }
