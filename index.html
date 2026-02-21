@@ -7,10 +7,10 @@
     <link rel="shortcut icon" href="icons/programacion.png" type="image/x-icon">
     <title>Portifólio</title>
     <script src="https://kit.fontawesome.com/63facef115.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="css/estilo.css">
+    <link rel="stylesheet" href="css/estilo1.css">
     <link rel="stylesheet" href="css/animation.css">
     <style>
-        
+
     </style>
 </head>
 
@@ -41,76 +41,136 @@
         <main>
 
             <section id="projects">
-                <h2>Projetos</h2>
-                <div class="projects">
-                    <h3>Cronograma de atividades</h3>
-                    <div class="media-projects">
-                        <img src="img/projeto-01-cronograma.png" alt="">
+                <div class="carrousel-container">
+                    <div class="carrousel-track">
+                        <article class="projects">
+                            <h3>Cronograma de Atividades</h3>
+                            <span class="media">
+                                <img src="img/projeto-01-cronograma.png" alt="">
+                            </span>
+                            <span class="text-project">
+                                <details>
+                                    <summary>DCT Vendors - 2026</summary>
+                                    <p>
+                                        Calendário estratégico para gerenciamento de serviços terceirizados.
+                                        Desenvolvido com HTML, CSS e JavaScript puro, o sistema oferece visão mensal das
+                                        atividades de diferentes empresas, destacando freezing comercial, TBRA, feriados
+                                        e
+                                        equipes de plantão. Inclui filtros dinâmicos, exportação de PDF e interface
+                                        responsiva.
+                                    </p>
+                                </details>
+                            </span>
+                        </article>
+                        <!-- Fim projeto -->
+                        <article class="projects">
+                            <h3>Workspace</h3>
+                            <span class="media">
+                                <img src="img/projeto02-workspace.png" alt="">
+                            </span>
+                            <span class="text-project">
+                                <details>
+                                    <summary>My Workspace - 2025</summary>
+                                    <p>
+                                        Hub de produtividade.
+                                        Desenvolvido com HTML, CSS e JavaScript puro, este workspace reúne em uma única
+                                        página
+                                        todos os links estratégicos utilizados pela equipe de planejamento. Design
+                                        minimalista,
+                                        modal de avisos e acesso rápido aos sistemas críticos da operação.
+                                    </p>
+                                </details>
+                            </span>
+                        </article>
+                        <!-- Fim projeto -->
+                        <article class="projects">
+                            <h3>Gerenciador de Tarefas - 2025</h3>
+                            <span class="media">
+                                <img src="img/projeto03-anotacoes.png" alt="">
+                            </span>
+                            <span class="text-project">
+                                <details>
+                                    <summary>Anotações Inteligentes</summary>
+                                    <p>
+                                        Quem nunca esqueceu de enviar aquele relatório todo dia 23? Este sistema foi
+                                        criado para
+                                        resolver exatamente isso: tarefas fixas e mensais são inseridas automaticamente
+                                        no seu
+                                        painel no dia certo. Além disso, você pode adicionar atividades avulsas, marcar
+                                        como
+                                        concluídas, reorganizar a lista e tudo fica salvo no navegador. Simples, prático
+                                        e
+                                        funcional.
+                                    </p>
+                                </details>
+                            </span>
+                        </article>
                     </div>
-                    <div class="text-project">
-                        <details>
-                            <summary>DCT Vendors 2026</summary>
-                            <p>
-                                Calendário estratégico para gerenciamento de serviços terceirizados.
-                                Desenvolvido com HTML, CSS e JavaScript puro, o sistema oferece visão mensal das
-                                atividades de diferentes empresas, destacando freezing comercial, TBRA, feriados e
-                                equipes de plantão. Inclui filtros dinâmicos, exportação de PDF e interface responsiva.
-                            </p>
-                        </details>
-                    </div>
-                </div>
-
-                <div class="projects">
-                    <h3>Workspace</h3>
-                    <div class="media-projects">
-                        <img src="img/projeto02-workspace.png" alt="">
-                    </div>
-                    <div class="text-project">
-                        <details>
-                            <summary>Workspace Engemon</summary>
-                            <p>
-                                Hub de produtividade.
-                                Desenvolvido com HTML, CSS e JavaScript puro, este workspace reúne em uma única página
-                                todos os links estratégicos utilizados pela equipe de planejamento. Design minimalista,
-                                modal de avisos e acesso rápido aos sistemas críticos da operação.
-                            </p>
-                        </details>
-                    </div>
-                </div>
-
-                <div class="projects">
-                    <h3>Gerenciador de Tarefas com Recorrência Automática</h3>
-                    <div class="media-projects">
-                        <img src="img/projeto03-anotacoes.png" alt="">
-                    </div>
-                    <div class="text-project">
-                        <details>
-                            <summary>Anotações Inteligentes</summary>
-                            <p>
-                                Quem nunca esqueceu de enviar aquele relatório todo dia 23? Este sistema foi criado para
-                                resolver exatamente isso: tarefas fixas e mensais são inseridas automaticamente no seu
-                                painel no dia certo. Além disso, você pode adicionar atividades avulsas, marcar como
-                                concluídas, reorganizar a lista e tudo fica salvo no navegador. Simples, prático e
-                                funcional.
-                            </p>
-                        </details>
-                    </div>
+                    <nav>
+                        <button onclick="moveCarrousel(-1)">←</button>
+                        <button onclick="moveCarrousel(1)">→</button>
+                    </nav>
                 </div>
             </section>
-            <section id="training"></section>
-            <section id="about"></section>
+
         </main>
         <footer>
             <nav id="menu">
                 <a href="#header"><i class="fa-solid fa-house"></i></a>
-                <a href=""><i class="fa-solid fa-compass-drafting"></i></a>
-                <a href=""><i class="fa-solid fa-brain"></i></a>
-                <a href=""><i class="fa-solid fa-user"></i></a>
+                <a href="#"><i class="fa-solid fa-compass-drafting"></i></a>
+                <a href="#"><i class="fa-solid fa-brain"></i></a>
+                <a href="#"><i class="fa-solid fa-user"></i></a>
             </nav>
         </footer>
     </div>
     <script src="js/code-animation.js"></script>
     <script src="js/update-contributions.js"></script>
+    <script>
+        const track = document.querySelector(".carrousel-track")
+        const cards = document.querySelectorAll("article.projects")
+        const container = document.querySelector(".carrousel-container")
+
+        console.log('Número de cards: ', cards.length)
+        console.log('Largura do container: ', container.offsetWidth)
+
+        //Calcular medidas
+
+        const cardWidth = cards[0].offsetWidth
+        const gap = parseInt(getComputedStyle(track).gap) || 10
+        const moveDistance = cardWidth + gap
+
+        //Controlar posição
+
+        let currentIndex = 0
+        let currentPosition = 0
+        const maxIndex = cards.length - 1
+
+        console.log('resumo: ', {
+            numeroCards: cards.length,
+            larguraCard: cardWidth,
+            gap: gap,
+            distanciaMovimento: moveDistance,
+            maxIndex: maxIndex
+        })
+
+        //Função para mover
+
+        function moveCarrousel(direction) {
+            const newIndex = currentIndex + direction
+
+            //Verificar limites
+            if (newIndex < 0 || newIndex > maxIndex) {
+                console.log("Limite atingido")
+                return
+            }
+
+            //Atualizar posição
+
+            currentIndex = newIndex
+            currentPosition = currentIndex * moveDistance
+            track.style.transform = `translateX(-${currentPosition}px)`
+        }
+    </script>
 </body>
 
 </html>
