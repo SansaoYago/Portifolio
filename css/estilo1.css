@@ -63,7 +63,6 @@ main {
 
 #projects {
     width: 100%;
-    border: 2px dotted red;
     margin: auto;
 }
 
@@ -84,13 +83,24 @@ article.projects {
 }
 
 article.projects h3 {
+    padding: 5px;
     background-color: whitesmoke;
     text-align: center;
+    display: flex;
+    justify-content: space-between;
+    border-radius: 10px;
+}
+
+article.projects h3 button {
+    background-color: rgba(32, 0, 240, 0.293);
+    cursor: pointer;
+    padding: 5px;
+    border: 1px solid rgba(0, 0, 0, 0.378);
+    border-radius: 15px;
 }
 
 main article.projects span {
     display: block;
-    border: 2px solid yellow;
     padding: 10px;
 }
 

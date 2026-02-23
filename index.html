@@ -44,7 +44,12 @@
                 <div class="carrousel-container">
                     <div class="carrousel-track">
                         <article class="projects">
-                            <h3>Cronograma de Atividades</h3>
+                            <h3>
+                                <button onclick="moveCarrousel(-1)">←</button>
+                                Cronograma de Atividades
+
+                                <button onclick="moveCarrousel(1)">→</button>
+                            </h3>
                             <span class="media">
                                 <img src="img/projeto-01-cronograma.png" alt="">
                             </span>
@@ -64,7 +69,11 @@
                         </article>
                         <!-- Fim projeto -->
                         <article class="projects">
-                            <h3>Workspace</h3>
+                            <h3>
+                                <button onclick="moveCarrousel(-1)">←</button>
+                                Workspace
+                                <button onclick="moveCarrousel(1)">→</button>
+                            </h3>
                             <span class="media">
                                 <img src="img/projeto02-workspace.png" alt="">
                             </span>
@@ -84,7 +93,11 @@
                         </article>
                         <!-- Fim projeto -->
                         <article class="projects">
-                            <h3>Gerenciador de Tarefas - 2025</h3>
+                            <h3>
+                                <button onclick="moveCarrousel(-1)">←</button>
+                                Gerenciador de Tarefas - 2025
+                                <button onclick="moveCarrousel(1)">→</button>
+                            </h3>
                             <span class="media">
                                 <img src="img/projeto03-anotacoes.png" alt="">
                             </span>
@@ -106,10 +119,6 @@
                             </span>
                         </article>
                     </div>
-                    <nav>
-                        <button onclick="moveCarrousel(-1)">←</button>
-                        <button onclick="moveCarrousel(1)">→</button>
-                    </nav>
                 </div>
             </section>
 
@@ -117,7 +126,7 @@
         <footer>
             <nav id="menu">
                 <a href="#header"><i class="fa-solid fa-house"></i></a>
-                <a href="#"><i class="fa-solid fa-compass-drafting"></i></a>
+                <a href="#projects"><i class="fa-solid fa-compass-drafting"></i></a>
                 <a href="#"><i class="fa-solid fa-brain"></i></a>
                 <a href="#"><i class="fa-solid fa-user"></i></a>
             </nav>
